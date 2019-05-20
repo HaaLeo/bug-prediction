@@ -14,20 +14,21 @@ stages:
 
 install:
   - pip install pipenv
-  - pipenv install --dev
+  - pipenv lock -r > requirements.txt
+  - pip install -r requirements.txt
 
 jobs:
   include:
     - stage: test
       script:
-        - pipenv run python -m pylint ./*/*.py
+        - python -m pylint ./*/*.py
     - stage: bundle
       script:
-        - pipenv run python setup.py sdist bdist_wheel
+        - python setup.py sdist bdist_wheel
     - stage: deploy
       before_deploy:
-        - pipenv run python setup.py sdist bdist_wheel
-        - pipenv run twine upload dist/* -u HaaLeo -p ${PYPI_PASSWORD}
+        - python setup.py sdist bdist_wheel
+        - twine upload dist/* -u HaaLeo -p ${PYPI_PASSWORD}
       script: skip
       deploy:
         provider: releases
