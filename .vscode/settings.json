@@ -1,0 +1,27 @@
+{
+    "[markdown]": {
+        "editor.quickSuggestions": false,
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": false
+    },
+    "cSpell.ignorePaths": [
+        "**/.git/**",
+        ".vscode",
+        ".pylintrc"
+    ],
+    "cSpell.words": [
+        "pylint",
+        "Hanisch",
+        "pypi",
+        "paypal",
+        "bugprediction"
+    ],
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "${workspaceFolder}/.venv/Scripts/pylint",
+    "python.pythonPath": "${workspaceFolder}/.venv"
+}

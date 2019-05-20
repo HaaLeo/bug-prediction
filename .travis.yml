@@ -1,0 +1,39 @@
+language: python
+python:
+  - "3.7"
+
+sudo: false
+
+env: PIPENV_VENV_IN_PROJECT=1
+
+stages:
+  - test
+  - bundle
+  - name: deploy
+    if: tag =~ /^v\d+\.\d+\.\d+$/ AND repo = HaaLeo/bug-prediction
+
+install:
+  - pip install pipenv
+  - pipenv install --dev
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - pipenv run python -m pylint ./*/*.py
+    - stage: bundle
+      script:
+        - pipenv run python setup.py sdist bdist_wheel
+    - stage: deploy
+      before_deploy:
+        - pipenv run python setup.py sdist bdist_wheel
+        - pipenv run twine upload dist/* -u HaaLeo -p ${PYPI_PASSWORD}
+      script: skip
+      deploy:
+        provider: releases
+        file_glob: true
+        file: "dist/*"
+        api_key: ${TRAVIS_CD}
+        skip_cleanup: true
+        on:
+          tags: true
