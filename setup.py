@@ -27,7 +27,7 @@ setup(
     author='Leo Hanisch',
     license='BSD 3-Clause License',
     install_requires=[
-        'vcstools>=0.1.40, <1.0.0'
+        'gitpython>=2.1.1, <3.0.0'
     ],
     project_urls={
         'Issue Tracker': 'https://github.com/HaaLeo/bug-prediction/issues',
