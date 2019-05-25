@@ -3,7 +3,6 @@
 #  Licensed under the BSD 3-Clause License. See LICENSE.txt in the project root for license information.
 # ------------------------------------------------------------------------------------------------------
 
-#pylint: disable=useless-object-inheritance
 
 from collections import Counter
 from os import path
@@ -15,7 +14,7 @@ import git
 BURST_PERIOD_THRESHOLD = 2 * 60**2  # 2 hours
 
 
-class SourceControllManager(object):
+class SourceControllManager(object): # pylint:disable=useless-object-inheritance
 
     def __init__(self, project_path):
         if path.isabs(project_path):

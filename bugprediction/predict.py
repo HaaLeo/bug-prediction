@@ -3,9 +3,8 @@
 #  Licensed under the BSD 3-Clause License. See LICENSE.txt in the project root for license information.
 # ------------------------------------------------------------------------------------------------------
 
-#pylint: disable=useless-object-inheritance
+#pylint: disable=too-many-locals
 
-from os import path
 from collections import Counter
 from math import log, exp
 from itertools import islice
