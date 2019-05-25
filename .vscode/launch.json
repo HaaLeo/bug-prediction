@@ -8,7 +8,11 @@
             "module": "bugprediction",
             "args": [
                 "--directory",
-                "../vscode-timing"
+                "../vscode-timing",
+                "--periods",
+                "10",
+                "--subsystems",
+                "src"
             ]
         }
     ]

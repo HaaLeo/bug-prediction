@@ -12,7 +12,9 @@ stages:
 
 install:
   - pip install pipenv
-  - pipenv lock -r -d > requirements.txt
+  - pipenv lock -r -d > requirements-dev.txt
+  - pip install -r requirements-dev.txt
+  - pipenv lock -r > requirements.txt
   - pip install -r requirements.txt
 
 jobs:
