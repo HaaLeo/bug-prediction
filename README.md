@@ -17,7 +17,7 @@ The implementation was part of the course [Software Qualität](https://campus.tu
 You can install the package with `pip` from [pypi](https://pypi.org/project/bugprediction):
 
 ```
-pip install bugprediction
+pip3 install bugprediction
 
 bugprediction --version
 ```
@@ -38,7 +38,11 @@ TBD
 
 In addition to the client you can also use the API:
 
-TBD
+```python
+from bugprediction import predict
+
+predict(**kwargs)
+```
 
 ## Contribution
 

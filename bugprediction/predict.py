@@ -5,7 +5,7 @@
 
 #pylint: disable=too-many-locals
 
-from collections import Counter
+from collections import Counter, OrderedDict
 from math import log, exp
 from itertools import islice
 import time
@@ -44,14 +44,16 @@ def predict(**kwargs):
             acc_entropies += period_file_entropies
 
     if subsystems:
-        result = Counter()
+        subsystem_entropies = Counter()
         for subsystem in subsystems:
             for file_name in acc_entropies:
                 if file_name.startswith(subsystem.strip('./')):
-                    result[subsystem] += acc_entropies[file_name]
+                    subsystem_entropies[subsystem] += acc_entropies[file_name]
     else:
-        result = acc_entropies
+        subsystem_entropies = acc_entropies
 
+    # Order result
+    result = OrderedDict(subsystem_entropies.most_common())
     return result
 
 

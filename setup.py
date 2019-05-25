@@ -9,10 +9,10 @@ from setuptools import find_packages, setup
 
 # pylint: disable=exec-used,undefined-variable
 
-with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), 'r') as rf:
+with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), 'r', encoding="utf8") as rf:
     LONG_DESCRIPTION = rf.read()
 
-with open(path.join(path.abspath(path.dirname(__file__)), 'bugprediction/_version.py'), 'r') as f:
+with open(path.join(path.abspath(path.dirname(__file__)), 'bugprediction/_version.py'), 'r', encoding="utf8") as f:
     exec(f.read())
 
 setup(
@@ -34,7 +34,7 @@ setup(
         'Changelog': 'https://github.com/HaaLeo/bug-prediction/blob/master/CHANGELOG.md#changelog',
         'License': 'https://github.com/HaaLeo/bug-prediction/blob/master/LICENSE.txt'
     },
-    python_requires='>=2.7',
+    python_requires='>=3.0',
     keywords=[
         'bug',
         'bugs',
@@ -53,7 +53,6 @@ setup(
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',

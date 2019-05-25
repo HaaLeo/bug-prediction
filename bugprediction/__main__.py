@@ -6,7 +6,7 @@
 import sys
 from argparse import ArgumentParser
 import logging
-
+import json
 from ._version import __version__
 from .predict import predict
 
@@ -23,7 +23,7 @@ LOGGER = logging.getLogger(__name__)
 def main():
     args = _get_args()
     if args:
-        predict(**args)
+        print(json.dumps(predict(**args)))
 
 
 def _get_args():
@@ -67,13 +67,6 @@ def _get_args():
         '--periods',
         type=int,
         help='Number of periods to be created. If omitted all commits are processed')
-    parser.add_argument(
-        '-r',
-        '--reporter',
-        type=str,
-        default='pretty',
-        help='The report used to report the result',
-        choices=['json', 'pretty'])
     parser.add_argument(
         '-s',
         '--subsystems',
