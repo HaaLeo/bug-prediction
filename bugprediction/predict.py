@@ -11,6 +11,7 @@ from itertools import islice
 import time
 from .scm import SourceControllManager
 
+
 def predict(**kwargs):
     decay = kwargs.get('decay')
     period_count = kwargs.get('periods')
@@ -38,10 +39,12 @@ def predict(**kwargs):
 
         # Apply exponential decay if option is set
         if decay:
-            acc_entropies += exp(decay * (period['end_time']['epoch'] - current_time)) \
-                * period_file_entropies
-        else:
-            acc_entropies += period_file_entropies
+            # Apply decay on all files
+            for file_name in period_file_entropies:
+                period_file_entropies[file_name] *= \
+                    exp(decay * (period['end_time']['epoch'] - current_time))
+
+        acc_entropies += period_file_entropies
 
     if subsystems:
         subsystem_entropies = Counter()

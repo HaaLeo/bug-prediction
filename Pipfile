@@ -12,6 +12,8 @@ twine = ">=1.11.0"
 wheel = ">=0.31.0"
 autopep8 = "*"
 astroid = "*"
+pytest = "*"
+codecov = "*"
 
 [packages]
 gitpython = ">=2.1.1, <3.0.0"

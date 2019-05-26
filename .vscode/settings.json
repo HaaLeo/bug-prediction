@@ -13,6 +13,7 @@
         "pylint",
         "Hanisch",
         "pypi",
+        "pytest",
         "paypal",
         "bugprediction"
     ],
@@ -23,5 +24,11 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.pylintPath": "${workspaceFolder}/.venv/Scripts/pylint",
-    "python.pythonPath": "${workspaceFolder}/.venv"
+    "python.pythonPath": "${workspaceFolder}/.venv",
+    "python.testing.pyTestArgs": [
+        "bugprediction_test"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pyTestEnabled": true
 }

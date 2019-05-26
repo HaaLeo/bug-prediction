@@ -2,7 +2,7 @@
 
 [![Pypi](https://img.shields.io/pypi/v/bugprediction.svg?style=flat-square)](https://pypi.python.org/pypi/bugprediction) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bugprediction.svg?style=flat-square)](https://pypi.python.org/pypi/bugprediction) [![PyPI - Downloads](https://img.shields.io/pypi/dm/bugprediction.svg?style=flat-square)](https://pypistats.org/packages/bugprediction) [![Stars](https://img.shields.io/github/stars/HaaLeo/bug-prediction.svg?label=Stars&logo=github&style=flat-square)](https://github.com/HaaLeo/bug-prediction/stargazers)  
 [![PyPI - License](https://img.shields.io/pypi/l/bugprediction.svg?style=flat-square)](https://raw.githubusercontent.com/HaaLeo/bug-prediction/master/LICENSE.txt) 
-[![Build Status](https://img.shields.io/travis/HaaLeo/bug-prediction/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/bug-prediction) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
+[![Build Status](https://img.shields.io/travis/HaaLeo/bug-prediction/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/bug-prediction) [![Codecov](https://img.shields.io/codecov/c/github/HaaLeo/bug-prediction.svg?style=flat-square)](https://codecov.io/gh/HaaLeo/bug-prediction) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
 [![Donate](https://img.shields.io/badge/☕️-Buy%20Me%20a%20Coffee-blue.svg?&style=flat-square)](https://www.paypal.me/LeoHanisch/3eur)
 
 ## Description

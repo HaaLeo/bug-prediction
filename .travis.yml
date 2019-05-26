@@ -22,6 +22,7 @@ jobs:
     - stage: test
       script:
         - python -m pylint ./*/*.py
+        - python -m pytest --cov bugprediction bugprediction_test
     - stage: bundle
       script:
         - python setup.py sdist bdist_wheel
@@ -38,3 +39,6 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
+
+after_success:
+  - codecov
