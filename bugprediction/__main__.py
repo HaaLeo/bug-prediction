@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 import logging
 import json
 from ._version import __version__
-from .predict import predict
+from .history_complexity_metric import calculate_hcm
 
 # pylint: disable=undefined-variable
 
@@ -23,13 +23,13 @@ LOGGER = logging.getLogger(__name__)
 def main():
     args = _get_args()
     if args:
-        print(json.dumps(predict(**args)))
+        print(json.dumps(calculate_hcm(**args)))
 
 
 def _get_args():
     parser = ArgumentParser(
         prog='bugprediction',
-        description='Predict bugs using the complexity of code changes.')
+        description='Calculate the history complexity metric using the complexity of code changes.')
 
     parser.add_argument(
         '-v',

@@ -3,4 +3,4 @@
 #  Licensed under the BSD 3-Clause License. See LICENSE.txt in the project root for license information.
 # ------------------------------------------------------------------------------------------------------
 
-from .predict import predict
+from .history_complexity_metric import calculate_hcm

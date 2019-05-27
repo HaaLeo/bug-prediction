@@ -8,7 +8,7 @@
             "module": "bugprediction",
             "args": [
                 "--directory",
-                ".",
+                "./",
                 "--file-glob",
                 "**/*.py",
                 "--periods",

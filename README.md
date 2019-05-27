@@ -7,7 +7,7 @@
 
 ## Description
 
-This repository enables you to predict bugs using the complexity of code changes like Ahmed E. Hassan introduced at the [2009 IEEE 31st International Conference on Software Engineering](https://ieeexplore.ieee.org/document/5070510) in May 200ß9 (DOI: 10.1109/ICSE.2009.5070510).  
+This repository enables you to calculate the history complexity metric Ahmed E. Hassan introduced at the [2009 IEEE 31st International Conference on Software Engineering](https://ieeexplore.ieee.org/document/5070510) in May 200ß9 (DOI: 10.1109/ICSE.2009.5070510).  
 The implementation was part of the course [Software Qualität](https://campus.tum.de/tumonline/wbLv.wbShowLVDetail?pStpSpNr=950402174) at the Technical University of Munich in summer 2019.
 
 ## Installation
@@ -39,9 +39,9 @@ TBD
 In addition to the client you can also use the API:
 
 ```python
-from bugprediction import predict
+from bugprediction import calculate_hcm
 
-predict(**kwargs)
+history_complexity_metric = calculate_hcm(**kwargs)
 ```
 
 ## Contribution

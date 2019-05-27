@@ -4,6 +4,9 @@
 # ------------------------------------------------------------------------------------------------------
 
 #pylint: disable=too-many-locals
+"""
+This module represents the history complexity metric.
+"""
 
 from collections import Counter, OrderedDict
 from math import log, exp
@@ -13,7 +16,7 @@ import time
 from .scm import SourceControllManager
 
 
-def predict(**kwargs):
+def calculate_hcm(**kwargs):
     decay = kwargs.get('decay')
     period_count = kwargs.get('periods')
     subsystems = kwargs.get('subsystems')

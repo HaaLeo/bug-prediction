@@ -7,7 +7,6 @@
 from collections import Counter
 from glob import iglob
 from os import path
-import re
 
 import git
 
@@ -32,7 +31,7 @@ class SourceControllManager(object):  # pylint:disable=useless-object-inheritanc
 
         period = {}
         # Remove leading project_dir, because repo.files does not have it, too.
-        files_to_include = [file_name.split(self.__project_path, 1)[1]
+        files_to_include = [file_name.split(self.__project_path, 1)[1].lstrip('./\\')
                             for file_name in iglob(file_glob, recursive=True)]
 
         # Starts with latest commit
