@@ -7,6 +7,7 @@
 
 from collections import Counter, OrderedDict
 from math import log, exp
+from os import path
 from itertools import islice
 import time
 from .scm import SourceControllManager
@@ -16,8 +17,8 @@ def predict(**kwargs):
     decay = kwargs.get('decay')
     period_count = kwargs.get('periods')
     subsystems = kwargs.get('subsystems')
-    directory = kwargs['directory']
-    file_pattern = kwargs['file_pattern']
+    directory = path.normpath(kwargs['directory'])
+    file_glob = path.join(directory, kwargs['file_glob'])
 
     # Accumulated entropies
     acc_entropies = Counter()
@@ -25,7 +26,7 @@ def predict(**kwargs):
     current_time = time.time()
 
     # Trim the iterator to the specified amount of periods
-    periods_iterator = islice(manager.iter_change_periods(file_pattern), period_count)
+    periods_iterator = islice(manager.iter_change_periods(file_glob), period_count)
 
     for period in periods_iterator:
         overall_changes = sum(period['changes'].values())

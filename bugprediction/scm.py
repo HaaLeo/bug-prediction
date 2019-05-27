@@ -5,6 +5,7 @@
 
 
 from collections import Counter
+from glob import iglob
 from os import path
 import re
 
@@ -14,21 +15,25 @@ import git
 BURST_PERIOD_THRESHOLD = 2 * 60**2  # 2 hours
 
 
-class SourceControllManager(object): # pylint:disable=useless-object-inheritance
+class SourceControllManager(object):  # pylint:disable=useless-object-inheritance
 
     def __init__(self, project_path):
-        if path.isabs(project_path):
-            self.__repository = git.Repo(project_path)
+        self.__project_path = project_path
+        if path.isabs(self.__project_path):
+            self.__repository = git.Repo(self.__project_path)
         else:
-            self.__repository = git.Repo(path.abspath(project_path))
+            self.__repository = git.Repo(path.abspath(self.__project_path))
 
-    def iter_change_periods(self, file_pattern):
+    def iter_change_periods(self, file_glob):
         """
         Get the change count of each file per period.
         Time periods are determined dynamically as "burst time periods" (See the paper for further information).
         """
 
         period = {}
+        # Remove leading project_dir, because repo.files does not have it, too.
+        files_to_include = [file_name.split(self.__project_path, 1)[1]
+                            for file_name in iglob(file_glob, recursive=True)]
 
         # Starts with latest commit
         for commit in self.__repository.iter_commits():
@@ -46,7 +51,7 @@ class SourceControllManager(object): # pylint:disable=useless-object-inheritance
                 # Initialize new period
                 period = self.__init_period(commit.committed_date, commit.committed_datetime)
 
-            changes = self.__get_changes_for_commit(commit, file_pattern)
+            changes = self.__get_changes_for_commit(commit, files_to_include)
 
             # Sum changes per file
             period['changes'] += changes
@@ -59,13 +64,13 @@ class SourceControllManager(object): # pylint:disable=useless-object-inheritance
         yield period
 
     @staticmethod
-    def __get_changes_for_commit(commit, file_pattern):
+    def __get_changes_for_commit(commit, files_to_include):
         changes = {
             file_name:
                 commit.stats.files[file_name].get('insertions', 0)
                 + commit.stats.files[file_name].get('deletions', 0)
             for file_name in commit.stats.files
-            if re.match(file_pattern, file_name)
+            if path.normpath(file_name) in files_to_include
         }
 
         return Counter(changes)

@@ -39,10 +39,10 @@ def _get_args():
         help='Show version and exit')
     parser.add_argument(
         '-f',
-        '--file-pattern',
+        '--file-glob',
         type=str,
-        default='.*',
-        help='Regex file pattern that indicates which files shall be included (default: .*)'
+        default='**',
+        help='Glob file pattern that indicates which files shall be included (default: **)'
     )
     parser.add_argument(
         '-d',
