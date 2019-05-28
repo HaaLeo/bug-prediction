@@ -12,12 +12,25 @@ The implementation was part of the course [Software Qualität](https://campus.tu
 
 ## Installation
 
+### From Source
+
+```
+git clone git@github.com:HaaLeo/bug-prediction.git
+cd bug-prediction
+
+python setup.py sdist bdist_wheel
+pip install dist/bugprediction-0.0.1.tar.gz
+
+bugprediction --version
+```
+
+### From Pypi
 > ❗️ The package is not released yet
 
 You can install the package with `pip` from [pypi](https://pypi.org/project/bugprediction):
 
 ```
-pip3 install bugprediction
+pip install bugprediction
 
 bugprediction --version
 ```
