@@ -12,8 +12,7 @@ stages:
     if: tag =~ /^v\d+\.\d+\.\d+$/ AND repo = HaaLeo/bug-prediction
 
 install:
-  - pip install pipenv
-  - pipenv sync --dev
+  - pip install requirements.txt
 
 jobs:
   include:
