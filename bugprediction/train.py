@@ -5,7 +5,7 @@
 
 from os import path
 
-from numpy import genfromtxt, asmatrix
+from numpy import genfromtxt
 from torch import Tensor
 from torch.autograd import Variable
 from torch.nn import MSELoss
