@@ -9,7 +9,7 @@
 
 This repository enables you to calculate the history complexity metric Ahmed E. Hassan introduced at the [2009 IEEE 31st International Conference on Software Engineering](https://ieeexplore.ieee.org/document/5070510) in May 200ß9 (DOI: 10.1109/ICSE.2009.5070510).  
 The implementation was part of the course [Software Qualität](https://campus.tum.de/tumonline/wbLv.wbShowLVDetail?pStpSpNr=950402174) at the Technical University of Munich in summer 2019.  
-The training data set was derived from the data set that Marco D'Ambros, Michele Lanza and Romain Robbes used in their paper [An Extensive Comparison of Bug Prediction Approaches](https://ieeexplore.ieee.org/document/5463279).
+The training data set was derived from the data set that Marco D'Ambros, Michele Lanza and Romain Robbes used in their paper [An Extensive Comparison of Bug Prediction Approaches](https://ieeexplore.ieee.org/document/5463279). The original data set is available at http://bug.inf.usi.ch/index.php.
 
 ## Installation
 
@@ -44,6 +44,7 @@ To print all available options:
 bugprediction --help
 ```
 
+Training is currently only possible from source. To do so run the edit the `train.py` to your needs and run it.
 ### Features
 
 TBD
