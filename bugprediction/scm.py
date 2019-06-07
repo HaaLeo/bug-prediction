@@ -44,16 +44,20 @@ class SourceControllManager(object):  # pylint:disable=useless-object-inheritanc
             # If within BURST_PERIOD_THRESHOLD seconds no code change occurred,
             # create a new time period
             if period['start_time']['epoch'] - BURST_PERIOD_THRESHOLD >= commit.committed_date:
+
                 # yield period when it is finished
                 yield period
 
                 # Initialize new period
                 period = self.__init_period(commit.committed_date, commit.committed_datetime)
 
-            changes = self.__get_changes_for_commit(commit, files_to_include)
+            # Sum insertions and deletions
+            changes = {file_name: stats['insertions'] + stats['deletions']
+                       for file_name, stats in commit.stats.files.items()
+                       if path.normpath(file_name) in files_to_include}
 
             # Sum changes per file
-            period['changes'] += changes
+            period['changes'] += Counter(changes)
 
             # Update period start time
             period['start_time']['epoch'] = commit.committed_date
@@ -62,17 +66,6 @@ class SourceControllManager(object):  # pylint:disable=useless-object-inheritanc
         # Always yield last period so no commit is forgotten
         yield period
 
-    @staticmethod
-    def __get_changes_for_commit(commit, files_to_include):
-        changes = {
-            file_name:
-                commit.stats.files[file_name].get('insertions', 0)
-                + commit.stats.files[file_name].get('deletions', 0)
-            for file_name in commit.stats.files
-            if path.normpath(file_name) in files_to_include
-        }
-
-        return Counter(changes)
 
     @staticmethod
     def __init_period(commit_epoch, commit_datetime):
