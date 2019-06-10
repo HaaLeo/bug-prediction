@@ -1,0 +1,13 @@
+{
+    "history_complexity_metric": "weighted_not_decayed",
+    "learning_rate": 0.0030999999999999995,
+    "val_loss": [
+        67.08973693847656
+    ],
+    "train_loss": [
+        91.96265411376953
+    ],
+    "test_loss": [
+        1.0316765308380127
+    ]
+}
