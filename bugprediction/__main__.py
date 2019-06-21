@@ -9,6 +9,7 @@ import logging
 import json
 from ._version import __version__
 from .history_complexity_metric import calculate_hcm
+from .predict import predict
 
 # pylint: disable=undefined-variable
 
@@ -23,7 +24,9 @@ LOGGER = logging.getLogger(__name__)
 def main():
     args = _get_args()
     if args:
-        print(json.dumps(calculate_hcm(**args)))
+        hcm_map = calculate_hcm(**args)
+        predigtion_map = predict(hcm_map, **args)
+        print(json.dumps(predigtion_map))
 
 
 def _get_args():
