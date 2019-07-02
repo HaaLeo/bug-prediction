@@ -61,7 +61,7 @@ def calculate_hcm(**kwargs):
 
     # Order result
     result = OrderedDict(subsystem_entropies.most_common())
-    return result
+    return result, manager.lastest_commit
 
 
 def _entropy_for_files(file_change_dist, contribution_arg):

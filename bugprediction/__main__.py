@@ -5,8 +5,10 @@
 
 import sys
 from argparse import ArgumentParser
+from os import path
 import logging
 import json
+
 from ._version import __version__
 from .history_complexity_metric import calculate_hcm
 from .predict import predict
@@ -24,9 +26,15 @@ LOGGER = logging.getLogger(__name__)
 def main():
     args = _get_args()
     if args:
-        hcm_map = calculate_hcm(**args)
+        hcm_map, latest_commit = calculate_hcm(**args)
         predigtion_map = predict(hcm_map, **args)
-        print(json.dumps(predigtion_map))
+        result = {
+            'prediction': predigtion_map,
+            'calculation_args': args
+        }
+        result_path = path.join(path.abspath(path.dirname(__file__)), '-'.join([path.basename(path.basename(args['directory'])), latest_commit, 'prediction.json']))
+        with open(result_path, 'w') as write_file:
+            json.dump(result, write_file, indent=4)
 
 
 def _get_args():

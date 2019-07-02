@@ -18,10 +18,15 @@ class SourceControllManager(object):  # pylint:disable=useless-object-inheritanc
 
     def __init__(self, project_path):
         self.__project_path = project_path
+        self.__latest_commit = None
         if path.isabs(self.__project_path):
             self.__repository = git.Repo(self.__project_path)
         else:
             self.__repository = git.Repo(path.abspath(self.__project_path))
+
+    @property
+    def lastest_commit(self):
+        return self.__latest_commit
 
     def iter_change_periods(self, file_glob):
         """
@@ -34,12 +39,16 @@ class SourceControllManager(object):  # pylint:disable=useless-object-inheritanc
         files_to_include = [file_name.split(self.__project_path, 1)[1].lstrip('./\\')
                             for file_name in iglob(file_glob, recursive=True)]
 
+        self.__latest_commit = None
+
         # Starts with latest commit
         for commit in self.__repository.iter_commits():
 
             # For first iteration
             if not period:
                 period = self.__init_period(commit.committed_date, commit.committed_datetime)
+                if not self.__latest_commit:
+                    self.__latest_commit = commit.hexsha
 
             # If within BURST_PERIOD_THRESHOLD seconds no code change occurred,
             # create a new time period

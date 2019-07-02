@@ -25,10 +25,10 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintPath": "${workspaceFolder}/.venv/Scripts/pylint",
     "python.pythonPath": "${workspaceFolder}/.venv",
-    "python.testing.pyTestArgs": [
+    "python.testing.pytestArgs": [
         "bugprediction_test"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.nosetestsEnabled": false,
-    "python.testing.pyTestEnabled": true
+    "python.testing.pytestEnabled": true
 }
