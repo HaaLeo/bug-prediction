@@ -75,7 +75,7 @@ def kwargs():
 def test_predict_full_contribution(kwargs, scm):
     from bugprediction.history_complexity_metric import calculate_hcm
 
-    result = calculate_hcm(**kwargs)
+    result, _ = calculate_hcm(**kwargs)
     assert result['foo/bar.txt'] == 1.986803511923148
     assert result['hello/world.txt'] == 1.986803511923148
     scm.SourceControllManager().iter_change_periods.assert_called_once_with(path.normpath('../test-dir/test-pattern'))
@@ -85,7 +85,7 @@ def test_predict_percentage_contribution(kwargs, scm):
     kwargs['contribution'] = 'percentage'
     from bugprediction.history_complexity_metric import calculate_hcm
 
-    result = calculate_hcm(**kwargs)
+    result, _ = calculate_hcm(**kwargs)
     assert result['foo/bar.txt'] == 0.9000447651638763
     assert result['hello/world.txt'] == 1.0867587467592714
     scm.SourceControllManager().iter_change_periods.assert_called_once_with(path.normpath('../test-dir/test-pattern'))
@@ -95,7 +95,7 @@ def test_predict_uniform_contribution(kwargs, scm):
     kwargs['contribution'] = 'uniform'
     from bugprediction.history_complexity_metric import calculate_hcm
 
-    result = calculate_hcm(**kwargs)
+    result, _ = calculate_hcm(**kwargs)
     assert result['foo/bar.txt'] == 0.993401755961574
     assert result['hello/world.txt'] == 0.993401755961574
     scm.SourceControllManager().iter_change_periods.assert_called_once_with(path.normpath('../test-dir/test-pattern'))
@@ -105,7 +105,7 @@ def test_predict_decay(kwargs, scm):
     kwargs['decay'] = .4
     from bugprediction.history_complexity_metric import calculate_hcm
 
-    result = calculate_hcm(**kwargs)
+    result, _ = calculate_hcm(**kwargs)
     assert result['foo/bar.txt'] == 4.230202958175646e-18
     assert result['hello/world.txt'] == 4.230202958175646e-18
     scm.SourceControllManager().iter_change_periods.assert_called_once_with(path.normpath('../test-dir/test-pattern'))
@@ -115,6 +115,6 @@ def test_predict_subsystems(kwargs, scm):
     kwargs['subsystems'] = ['foo']
     from bugprediction.history_complexity_metric import calculate_hcm
 
-    result = calculate_hcm(**kwargs)
+    result, _ = calculate_hcm(**kwargs)
     assert result['foo'] == 1.986803511923148
     scm.SourceControllManager().iter_change_periods.assert_called_once_with(path.normpath('../test-dir/test-pattern'))

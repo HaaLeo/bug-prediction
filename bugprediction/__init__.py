@@ -4,3 +4,4 @@
 # ------------------------------------------------------------------------------------------------------
 
 from .history_complexity_metric import calculate_hcm
+from .predict import predict

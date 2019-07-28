@@ -22,9 +22,9 @@ def predict(hcm_map, **kwargs):
     np_list = np.array(list(hcm_map.values())).reshape((-1, 1))
     x_input = Variable(Tensor(np_list))
 
-    predigtion = model.forward(x_input)
+    prediction = model.forward(x_input)
 
-    return dict(zip(hcm_map.keys(), predigtion.flatten().tolist()))
+    return dict(zip(hcm_map.keys(), prediction.flatten().tolist()))
 
 def _load_model(**kwargs):
     model = LinearRegressionModel(1, 1)
