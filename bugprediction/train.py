@@ -14,6 +14,7 @@ from torch.nn import MSELoss
 from torch.optim import SGD
 from linear_regression_model import LinearRegressionModel
 
+# pylint: disable=too-many-statements,too-many-locals
 
 def train():
     # Load data
@@ -127,8 +128,8 @@ def train():
 
     train_plt, = plt.plot(range(epochs), train_loss_list, label='Train Loss')
     val_plt, = plt.plot(range(epochs), val_loss_list, label='Validation Loss')
-    plt.xlabel("Number of Epochs")
-    plt.ylabel("Loss")
+    plt.xlabel('Number of Epochs')
+    plt.ylabel('Loss')
     plt.legend(handles=[train_plt, val_plt])
     plt.show()
 

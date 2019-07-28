@@ -38,7 +38,7 @@ Training is currently only possible from source. To do so run the edit the `trai
 ### API
 In order to use the API you need to bundle and install the package:
 
-```python
+```
 python setup.py sdist bdist_wheel
 pip install dist/bugprediction-0.0.1.tar.gz
 ```

@@ -18,7 +18,7 @@ def predict(hcm_map, **kwargs):
     try:
         model = _load_model(**kwargs)
     except FileNotFoundError:
-        LOGGER.warn('No model is available for parameter="%s"', kwargs)
+        LOGGER.warning('No model is available for parameter="%s"', kwargs)
     np_list = np.array(list(hcm_map.values())).reshape((-1, 1))
     x_input = Variable(Tensor(np_list))
 
